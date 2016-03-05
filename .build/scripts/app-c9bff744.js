@@ -5,6 +5,9 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices"])
 	$routeProvider.when("/", {
 		controller: "SellersController",
 		templateUrl: "components/sellers/index.html"
+	}).when("/:sellerID", {
+		templateUrl: "components/sellers/singleSeller.html",
+		controller: "single"
 	});
 });
 
@@ -193,19 +196,29 @@ function AppResource() {
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource) {
+function SellersController($scope, AppResource, $location) {
 	// TODO: load data from AppResource! Also, add other methods, such as to
 	// add/update sellers etc.
 
+	var $path = $location.path;
 	var sellerListPromise = AppResource.getSellers();
-	
+
 	sellerListPromise.success(function(sellersList){
 		console.log(sellersList);
 		$scope.sellers = sellersList;
 	});
 
-
+	$scope.addSeller = function(name, cat, img){
+		var seller_obj = {
+			name: name,
+			category: cat,
+			imagePath: img,
+		};
+		AppResource.addSeller(seller_obj);
+		console.log("virkadi!");
+	};
 });
+
 "use strict";
 
 /**
