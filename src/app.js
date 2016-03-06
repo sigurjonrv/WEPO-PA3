@@ -7,6 +7,6 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices"])
 		templateUrl: "components/sellers/index.html"
 	}).when("/:sellerID", {
 		templateUrl: "components/sellers/singleSeller.html",
-		controller: "single"
+		controller: "singleSellerController"
 	});
 });

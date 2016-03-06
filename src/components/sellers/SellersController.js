@@ -21,6 +21,7 @@ function SellersController($scope, AppResource, $location) {
 		};
 		AppResource.addSeller(seller_obj);
 		console.log("virkadi!");
+		$("#add").modal('hide');
 	};
 
 	//helper function for updateSeller()
@@ -38,23 +39,25 @@ function SellersController($scope, AppResource, $location) {
 		var newCat = $scope.UpdateSellerCat;
 		var newImg = $scope.UpdateSellerImg;
 
-		console.log($scope.UpdateSellerName);
-		if(name != ""){
+		if(name !== undefined){
 			newName = name;
 		}
-		if($scope.UpdateSellerCat != cat){
+		if(cat !== undefined){
 			newCat = cat;
 		}
-		if($scope.UpdateSellerImg != img){
+		if(img !== undefined){
 			newImg = img;
 		}
+
 
 		var seller_obj = {
 			name: newName,
 			category: newCat,
 			imagePath: newImg,
 		};
+		
 		AppResource.updateSeller($scope.UpdateSellerId, seller_obj);
+		$("#update").modal('hide');
 	};
 
 	
