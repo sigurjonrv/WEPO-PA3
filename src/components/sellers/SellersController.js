@@ -22,4 +22,40 @@ function SellersController($scope, AppResource, $location) {
 		AppResource.addSeller(seller_obj);
 		console.log("virkadi!");
 	};
+
+	//helper function for updateSeller()
+	$scope.setUpdateSeller = function(seller){
+		console.log("bruh");
+		$scope.UpdateSellerId = seller.id;
+		$scope.UpdateSellerName = seller.name;
+		$scope.UpdateSellerCat = seller.category;
+		$scope.UpdateSellerImg = seller.imagePath;
+		console.log($scope.UpdateSellerId);
+	};
+
+	$scope.updateSellers = function(name, cat, img){
+		var newName = $scope.UpdateSellerName;
+		var newCat = $scope.UpdateSellerCat;
+		var newImg = $scope.UpdateSellerImg;
+
+		console.log($scope.UpdateSellerName);
+		if(name != ""){
+			newName = name;
+		}
+		if($scope.UpdateSellerCat != cat){
+			newCat = cat;
+		}
+		if($scope.UpdateSellerImg != img){
+			newImg = img;
+		}
+
+		var seller_obj = {
+			name: newName,
+			category: newCat,
+			imagePath: newImg,
+		};
+		AppResource.updateSeller($scope.UpdateSellerId, seller_obj);
+	};
+
+	
 });

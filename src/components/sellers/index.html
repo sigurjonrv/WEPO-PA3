@@ -19,17 +19,19 @@
 		<tr>
 			<th>Sölu Aðilar</th>
 			<th>Flokkur</th> 
+			<th></th> 
 		</tr>
 		<tr class="active" ng-repeat="seller in sellers">
 			<td><a href="{{path}}/{{seller.name}}"> {{seller.name}}</a></td>
 			<td>{{seller.category}}</td>
+			<td><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-8" data-toggle="modal" data-target=".bs-edit-modal-lg" ng-click="setUpdateSeller(seller)">Breyta söluaðila</button></td>
 		</tr>
 
 	</table>
 	<div class="col-lg-12">
-		<button type="button" class="btn btn-primary col-lg-2 col-lg-offset-10" data-toggle="modal" data-target=".bs-example-modal-lg">Bæta Við</button>
+		<button type="button" class="btn btn-primary col-lg-2 col-lg-offset-10" data-toggle="modal" data-target=".bs-add-modal-lg">Bæta Við</button>
 
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal fade bs-add-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="panel panel-default">
@@ -38,7 +40,7 @@
 						</div>
 						<div class="panel-body">
 							<form>
-								<div class="form-group">//
+								<div class="form-group">
 									<label for="name">Nafn: </label>
 									<input type="text" class="form-control" id="name" placeholder="Nafn..." ng-model="name">
 								</div>
@@ -51,6 +53,36 @@
 									<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="img">
 								</div>
 								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="addSeller(name, cat, img)">Bæta við</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade bs-edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2>Breyta við Söluaðila</h2>
+						</div>
+						<div class="panel-body">
+							<form>
+								<div class="form-group">
+									<label for="name">Nafn: </label>
+									<input type="text" class="form-control" id="name" placeholder="{{UpdateSellerName}}" ng-model="updateName">
+								</div>
+								<div class="form-group">
+									<label for="category">Flokkur: </label>
+									<input type="text" class="form-control" id="category" placeholder="{{UpdateSellerCat}}" ng-model="updateCat">
+								</div>
+								<div class="form-group">
+									<label for="image">Linkur á mynd: </label>
+									<input type="text" class="form-control" id="image" placeholder="{{UpdateSellerImg}}" ng-model="uptadeImg">
+								</div>
+								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="updateSellers(updateName, updateCat, uptadeImg)">Uppfæra</button>
 							</form>
 						</div>
 					</div>
