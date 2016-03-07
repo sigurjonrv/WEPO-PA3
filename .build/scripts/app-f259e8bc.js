@@ -5,7 +5,7 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices"])
 	$routeProvider.when("/", {
 		controller: "SellersController",
 		templateUrl: "components/sellers/index.html"
-	}).when("/:sellerID", {
+	}).when("/:sellerId", {
 		templateUrl: "components/sellers/singleSeller.html",
 		controller: "singleSellerController"
 	});
@@ -147,12 +147,11 @@ function AppResource() {
 		getSellerDetails: function(id) {
 			var seller;
 			for (var i = 0; i < mockSellers.length; ++i) {
-				if (mockSellers[i].id === id) {
+				if (mockSellers[i].id === parseInt(id)) {
 					seller = mockSellers[i];
 					break;
 				}
 			}
-
 			if (seller) {
 				return mockHttpPromise(mockResource.successLoadSellerDetails, seller);
 			} else {
@@ -163,7 +162,7 @@ function AppResource() {
 		getSellerProducts: function getSellerProducts(id) {
 			var products = [];
 			for (var i = 0; i < mockProducts.length; ++i) {
-				if (mockProducts[i].id === id) {
+				if (mockProducts[i].id === parseInt(id)) {
 					products.push(mockProducts[i].product);
 				}
 			}
@@ -257,7 +256,40 @@ function SellersController($scope, AppResource, $location) {
 
 	
 });
+"use strict";
 
+angular.module("project3App").controller("singleSellerController",
+function singleSellerController($scope, AppResource, $location, $routeParams) {
+	// TODO: load data from AppResource! Also, add other methods, such as to
+	// add/update sellers etc.
+		$scope.path = $location.path;
+		console.log($routeParams.sellerId);
+		var currID = $routeParams.sellerId;
+		var SellerDetailsPromise = AppResource.getSellerDetails(currID);
+		var SellerProductsPromise = AppResource.getSellerProducts(currID);
+
+		SellerDetailsPromise.success(function(seller){
+			$scope.currSeller = seller;
+		});
+
+		SellerProductsPromise.success(function(products){
+			for(var i = 0; i < products.length;i++){
+				console.log(i);
+				if(products[i].imagePath === ""){
+					products[i].imagePath = "https://az853139.vo.msecnd.net/static/images/not-found.png";
+				}
+				//console.log(products[i]);
+			}
+			
+			$scope.currSellerProducts = products;
+			console.log(products);
+		});
+		//console.log(currSeller.success());
+
+
+
+	
+});//style="max-height: 350px; max-width: 350px;
 "use strict";
 
 /**

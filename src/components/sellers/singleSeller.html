@@ -1,0 +1,21 @@
+<div>
+	<div style="padding-bottom: 70px;">
+		<img src="{{currSeller.imagePath}}" alt="..." class="img-rounded col-lg-3">
+		<h1>{{currSeller.name}}</h1>
+		<h1><small>{{currSeller.category}}</small></h1>
+	</div>
+	<div style="padding-bottom: 70px;">
+		<ul class="nav nav-tabs nav-justified col-lg-5">
+			<li role="presentation"><a href="#/">Allar Vörur</a></li>
+			<li role="presentation"><a href="#/">Topp 10</a></li>
+		</ul>
+	</div>
+	<div>
+		<ul ng-repeat="product in currSellerProducts">
+			<div class="col-lg-3" style="padding: 20px;">
+				<img src="{{product.imagePath}}" alt="Mynd fannst ekki" class="img-thumbnail" style="display: block; height: 250px; width: 300px">
+				<h3>{{product.name}}</h3><h3>{{product.price}}Kr.</h3>
+			</div>
+		</ul>
+	</div>
+</div>

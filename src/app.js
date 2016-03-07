@@ -5,7 +5,7 @@ angular.module("project3App", ["ngRoute", "ui.bootstrap", "sharedServices"])
 	$routeProvider.when("/", {
 		controller: "SellersController",
 		templateUrl: "components/sellers/index.html"
-	}).when("/:sellerID", {
+	}).when("/:sellerId", {
 		templateUrl: "components/sellers/singleSeller.html",
 		controller: "singleSellerController"
 	});
