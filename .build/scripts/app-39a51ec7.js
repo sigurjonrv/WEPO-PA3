@@ -61,7 +61,7 @@ function AppResource() {
 
 	var mockProducts = [
 		createProduct(1,  1, "Ullarvettlingar",  1899, 500, 12, "http://i.imgur.com/MZOmRnH.jpg"),
-		createProduct(1,  2, "Ullarsokkar",      2199, 488,  9, "http://i.imgur.com/0XKznD4.jpg?1"),
+		createProduct(1,  2, "Ullarsokkar",      2199, 488,  9, "http://i.imgur.com/0XKznD4.jpg"),
 		createProduct(1,  3, "Trefill",           999, 600, 23, "http://i.imgur.com/50ivFlC.jpg"),
 		createProduct(1,  4, "Sjal",             2399, 120, 65, "https://farm6.static.flickr.com/5205/5298302908_fb75ed8e0a.jpg"),
 		createProduct(1,  5, "Húfa",             1799, 700, 11, "http://purnahandmade.com/media/catalog/product/cache/1/image/ab49223884317513dca074f3bc642368/p/h/phc_malle_08_orwh.jpg"),
@@ -195,7 +195,7 @@ function AppResource() {
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource, $location) {
+function SellersController($scope, AppResource, $location, $routeParams) {
 	// TODO: load data from AppResource! Also, add other methods, such as to
 	// add/update sellers etc.
 
@@ -254,6 +254,10 @@ function SellersController($scope, AppResource, $location) {
 		$("#update").modal('hide');
 	};
 
+	$scope.viewSeller = function(id){
+		$location.path("/" + id);
+	};
+
 	
 });
 "use strict";
@@ -273,16 +277,15 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 		});
 
 		SellerProductsPromise.success(function(products){
-			for(var i = 0; i < products.length;i++){
-				console.log(i);
+			console.log(products.length);
+			for(var i = 3; i < products.length; i++){
 				if(products[i].imagePath === ""){
 					products[i].imagePath = "https://az853139.vo.msecnd.net/static/images/not-found.png";
+					console.log("i");
 				}
-				//console.log(products[i]);
 			}
-			
 			$scope.currSellerProducts = products;
-			console.log(products);
+			console.log($scope.currSellerProducts);
 		});
 		//console.log(currSeller.success());
 

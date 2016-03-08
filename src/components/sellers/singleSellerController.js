@@ -15,16 +15,15 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 		});
 
 		SellerProductsPromise.success(function(products){
-			for(var i = 0; i < products.length;i++){
-				console.log(i);
+			console.log(products.length);
+			for(var i = 3; i < products.length; i++){
 				if(products[i].imagePath === ""){
 					products[i].imagePath = "https://az853139.vo.msecnd.net/static/images/not-found.png";
+					console.log("i");
 				}
-				//console.log(products[i]);
 			}
-			
 			$scope.currSellerProducts = products;
-			console.log(products);
+			console.log($scope.currSellerProducts);
 		});
 		//console.log(currSeller.success());
 

@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("project3App").controller("SellersController",
-function SellersController($scope, AppResource, $location) {
+function SellersController($scope, AppResource, $location, $routeParams) {
 	// TODO: load data from AppResource! Also, add other methods, such as to
 	// add/update sellers etc.
 
@@ -58,6 +58,10 @@ function SellersController($scope, AppResource, $location) {
 		
 		AppResource.updateSeller($scope.UpdateSellerId, seller_obj);
 		$("#update").modal('hide');
+	};
+
+	$scope.viewSeller = function(id){
+		$location.path("/" + id);
 	};
 
 	
