@@ -1,7 +1,7 @@
 <div>
 	<div class="row" style="padding-bottom: 50px;">
 		<img src="{{currSeller.imagePath}}" alt="..." class="img-rounded col-lg-3 col-xs-12">
-		<h1 class="col-lg-9 col-xs-12">{{currSeller.name}}</h1>
+		<h1 class="col-lg-9 col-xs-12">{{currSeller.name}}</h1></a>
 		<h1><small>{{currSeller.category}}</small></h1>
 	</div>
 
@@ -16,13 +16,12 @@
 		<ul ng-repeat="product in currSellerProducts">
 			<div class="col-lg-3" style="padding: 20px;">
 				<img ng-src=" {{ product.imagePath }} " class="img-thumbnail" style="display: block; height: 250px; width: 300px;">
-				<h3>{{product.name}}</h3><h3>{{product.price}}Kr.</h3>
+				<h3><a data-toggle="modal" data-target=".bs-editP-modal-lg">{{product.name}}</a></h3><h3>{{product.price}}Kr.</h3>
 			</div>
 		</ul>
 	</div>
 
 	<div class="row" style="padding-top: 30px;">
-		<div class="row" style="padding-top: 30px;">
 		<div class="col-lg-12">
 			<button type="button" class="btn btn-primary col-lg-2 col-lg-offset-10" data-toggle="modal" data-target=".bs-addP-modal-lg">Skrá vöru</button>
 			<div class="modal fade bs-addP-modal-lg" id="addP" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -50,7 +49,7 @@
 										<label for="image">Linkur á mynd: </label>
 										<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="Pimage">
 									</div>
-									<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="addProduct(Pname, price, quantity, Pimage)">Skrá</button>
+									<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="editProduct(Pname, price, quantity, Pimage)">uppfæra</button>
 								</form>
 							</div>
 						</div>
@@ -59,5 +58,37 @@
 			</div>
 		</div>
 	</div>
-	</div>
 </div>
+
+			<div class="modal fade bs-editP-modal-lg" id="editP" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h2>Skrá nýja vöru</h2>
+							</div>
+							<div class="panel-body">
+								<form>
+									<div class="form-group">
+										<label for="name">Nafn á vöru: </label>
+										<input type="text" class="form-control" id="name" placeholder="Nafn vöru..." ng-model="Pname">
+									</div>
+									<div class="form-group">
+										<label for="category">Verð: </label>
+										<input type="text" class="form-control" id="category" placeholder="Flokkur..." ng-model="price">
+									</div>
+									<div class="form-group">
+										<label for="image">Magn til á lager: </label>
+										<input type="text" class="form-control" id="image" placeholder="Magn á lager..." ng-model="quantity">
+									</div>
+									<div class="form-group">
+										<label for="image">Linkur á mynd: </label>
+										<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="Pimage">
+									</div>
+									<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="editProduct(Pname, price, quantity, Pimage)">uppfæra</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

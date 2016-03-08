@@ -55,6 +55,21 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 			getSellersProduct();
 			$("#addP").modal('hide');
 		};
+		$scope.editProduct = function(Pname, price, quantity, Pimage){
+			console.log("kominn inní addProduct");
+
+			var newProduct = {
+				name: Pname,
+				price: price,
+				quantitySold: 0,
+				quantityInStock: quantity,
+				imagePath: Pimage
+			};
+
+			AppResource.updateProduct(currID, newProduct);
+			getSellersProduct();
+			$("#editP").modal('hide');
+		};
 		//console.log(currSeller.success());
 
 
