@@ -43,6 +43,7 @@ function AppResource() {
 		createSeller(4, "Leirkeraverkstæði Lomma", "Keramik", "https://upload.wikimedia.org/wikipedia/commons/6/67/Potter_at_work,_Jaura,_India.jpg")
 	];
 
+	var maxPoductID = 22;
 	var mockProducts = [
 		createProduct(1,  1, "Ullarvettlingar",  1899, 500, 12, "http://i.imgur.com/MZOmRnH.jpg"),
 		createProduct(1,  2, "Ullarsokkar",      2199, 488,  9, "http://i.imgur.com/0XKznD4.jpg"),
@@ -157,16 +158,19 @@ function AppResource() {
 		addSellerProduct: function addSellerProduct(id, product) {
 			var success = false;
 			if (mockResource.successAddSellerProduct) {
+				id = parseInt(id,10);
 				var seller = _.find(mockSellers, function(o){ return o.id === id;});
 				if (seller) {
 					success = true;
+					product.id = maxPoductID + 1;
+					maxPoductID++;
 					mockProducts.push({
 						id: seller.id,
 						product: product
 					});
 				}
 			}
-
+			console.log("-----------");
 			return mockHttpPromise(success, product);
 		}
 
