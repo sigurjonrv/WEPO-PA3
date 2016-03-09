@@ -16,7 +16,7 @@
 		<ul ng-repeat="product in currSellerProducts">
 			<div class="col-lg-3" style="padding: 20px;">
 				<img ng-src=" {{ product.imagePath }} " class="img-thumbnail" style="display: block; height: 250px; width: 300px;">
-				<h3><a data-toggle="modal" data-target=".bs-editP-modal-lg">{{product.name}}</a></h3><h3>{{product.price}}Kr.</h3>
+				<h3><a data-toggle="modal" data-target=".bs-editP-modal-lg" ng-click="setUpdateProductId(product.id)">{{product.name}}</a></h3><h3>{{product.price}}Kr.</h3>
 			</div>
 		</ul>
 	</div>

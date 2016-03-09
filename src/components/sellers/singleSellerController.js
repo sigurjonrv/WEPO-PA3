@@ -21,23 +21,28 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 		};
 
 		var getSellersProduct = function(){
-			console.log("asdadss");
+			console.log("getSellersProduct");
 			var SellerProductsPromise = AppResource.getSellerProducts(currID);
 
 			SellerProductsPromise.success(function(products){
-				console.log(products.length);
+				//console.log(products.length);
 				for(var i = 3; i < products.length; i++){
 					if(products[i].imagePath === ""){
 						products[i].imagePath = "https://az853139.vo.msecnd.net/static/images/not-found.png";
-						console.log("i");
+						//console.log("i");
 					}
 				}
 				$scope.currSellerProducts = products;
-				console.log($scope.currSellerProducts);
+				//console.log($scope.currSellerProducts);
 			});
 		};
 		getSellers();
 		getSellersProduct();
+
+		$scope.setUpdateProductId = function(id){
+			console.log("the id is: " + id);
+			$scope.UpdateProductId = id;
+		};
 
 		$scope.addProduct = function(Pname, price, quantity, Pimage){
 			console.log("kominn inní addProduct");
@@ -55,20 +60,25 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 			getSellersProduct();
 			$("#addP").modal('hide');
 		};
-		$scope.editProduct = function(Pname, price, quantity, Pimage){
-			console.log("kominn inní addProduct");
 
+		$scope.editProduct = function(Pname, price, quantity, Pimage){
+			//console.log("kominn inní addProduct");
+			console.log($scope.currSellerProducts);
 			var newProduct = {
 				name: Pname,
 				price: price,
-				quantitySold: 0,
+				quantitySold: "0",
 				quantityInStock: quantity,
 				imagePath: Pimage
 			};
+			//console.log(newProduct);
+			//console.log(currID);
 
-			AppResource.updateProduct(currID, newProduct);
+			AppResource.updateProduct($scope.UpdateProductId, newProduct);
 			getSellersProduct();
 			$("#editP").modal('hide');
+			console.log($scope.currSellerProducts);
+			
 		};
 		//console.log(currSeller.success());
 
