@@ -46,6 +46,24 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 			$scope.UpdateProductId = id;
 		};
 
+		$scope.all = function(){
+			getSellersProduct();
+		};
+
+		$scope.top10 = function(){
+			console.log("top10");
+			var sortedItems = $scope.currSellerProducts;
+			var temp = [];
+			sortedItems.sort(function(a,b){
+				return b.quantitySold - a.quantitySold;
+			});
+			for (var x = 0; x < 10; x++){
+				console.log(sortedItems[x]);
+				temp.push(sortedItems[x]);
+			}
+			$scope.currSellerProducts = temp;
+		};
+
 		$scope.addProduct = function(Pname, price, quantity, Pimage){
 			console.log("kominn inní addProduct");
 
