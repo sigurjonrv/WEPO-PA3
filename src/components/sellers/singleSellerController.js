@@ -32,6 +32,8 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 						//console.log("i");
 					}
 				}
+				console.log("rett? " + $scope.UpdateProductId);
+				$scope.products =  _.find(products, function(o){ return parseInt(o.id) === parseInt($scope.UpdateProductId);});
 				$scope.currSellerProducts = products;
 				//console.log($scope.currSellerProducts);
 			});
@@ -54,9 +56,7 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 				quantityInStock: quantity,
 				imagePath: Pimage
 			};
-			console.log(newProduct);
-			console.log(currID);
-			AppResource.addSellerProduct(currID, newProduct);
+			AppResource.addSellerProduct(currID, $scope.products);
 			getSellersProduct();
 			$("#addP").modal('hide');
 		};
@@ -67,22 +67,13 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 			var newProduct = {
 				name: Pname,
 				price: price,
-				quantitySold: "0",
+				quantitySold: 0,
 				quantityInStock: quantity,
 				imagePath: Pimage
 			};
-			//console.log(newProduct);
-			//console.log(currID);
-
 			AppResource.updateProduct($scope.UpdateProductId, newProduct);
 			getSellersProduct();
 			$("#editP").modal('hide');
-			console.log($scope.currSellerProducts);
-			
 		};
-		//console.log(currSeller.success());
 
-
-
-	
-});//style="max-height: 350px; max-width: 350px;
+});

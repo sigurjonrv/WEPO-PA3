@@ -190,21 +190,15 @@ function AppResource() {
 			return mockHttpPromise(success, product);
 		},
 
-		// TODO: the updateProduct() function is left as an exercise to
-		// the reader...
 		updateProduct: function(id, product) {
-			console.log("hér");
 			if (mockResource.successUpdateSellerProduct) {
 				var current = _.find(mockProducts, function(o){ return o.product.id === id;});
-				console.log(current);
 				if (current !== null) {
-					
-					current.name = product.name;
-					current.price = product.price;
-					current.quantitySold = product.quantitySold;
-					current.quantityInStock = product.quantityInStock;
-					current.imagePath = product.imagePath;
-					console.log(current);
+					current.product.name = product.name;
+					current.product.price = product.price;
+					current.product.quantitySold = product.quantitySold;
+					current.product.quantityInStock = product.quantityInStock;
+					current.product.imagePath = product.imagePath;
 				}
 			}
 			return mockHttpPromise(mockResource.successUpdateSellerProduct, product);
@@ -318,6 +312,8 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 						//console.log("i");
 					}
 				}
+				console.log("rett? " + $scope.UpdateProductId);
+				$scope.products =  _.find(products, function(o){ return parseInt(o.id) === parseInt($scope.UpdateProductId);});
 				$scope.currSellerProducts = products;
 				//console.log($scope.currSellerProducts);
 			});
@@ -340,9 +336,7 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 				quantityInStock: quantity,
 				imagePath: Pimage
 			};
-			console.log(newProduct);
-			console.log(currID);
-			AppResource.addSellerProduct(currID, newProduct);
+			AppResource.addSellerProduct(currID, $scope.products);
 			getSellersProduct();
 			$("#addP").modal('hide');
 		};
@@ -353,25 +347,16 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 			var newProduct = {
 				name: Pname,
 				price: price,
-				quantitySold: "0",
+				quantitySold: 0,
 				quantityInStock: quantity,
 				imagePath: Pimage
 			};
-			//console.log(newProduct);
-			//console.log(currID);
-
 			AppResource.updateProduct($scope.UpdateProductId, newProduct);
 			getSellersProduct();
 			$("#editP").modal('hide');
-			console.log($scope.currSellerProducts);
-			
 		};
-		//console.log(currSeller.success());
 
-
-
-	
-});//style="max-height: 350px; max-width: 350px;
+});
 "use strict";
 
 /**
