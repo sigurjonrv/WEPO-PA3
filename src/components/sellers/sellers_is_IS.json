@@ -1,7 +1,21 @@
 {
 	"sellers" : {
-		"Title":                     "Seljendur",
-		"Name":                      "Nafn",
+		"Title":                     "SöluTorgið",
+		"Title2":					 "Sölu Aðilar",
+		"Name":                      "Sölu Aðilar",
+		"AddButton":				 "Bæta Við",
+		"AddProductTitle":			 "Skrá nýja vöru",
+		"AddSellerTitle":			 "Skrá nýjan seljanda",
+		"EditButton":				 "Breyta",
+		"EditProductTitle":			 "Breyta vöru",
+		"EditSellerTitle":			 "Breyta seljanda",
+		"Category":					 "Fokkur",
+		"Nav-All":					 "Allar Vörur",
+		"Nav-Top10":				 "10 Vinsælustu",
+		"link":						 "Línkur á mynd",
+		"Price":					 "Verð",
+		"quantity":					 "Magn",
+		"update":					 "Uppfæra",
 		"Messages" : {
 			"LoadFailed":            "Ekki tókst að sækja lista yfir seljendur",
 			"SaveSucceeded":         "Nýjum seljanda hefur verið bætt við",

@@ -1,7 +1,8 @@
 
 
 <div class="page-header">
-  <h1>SöluTorgið <small>Sölu Aðilar</small></h1>
+	<h1 translate="sellers.Title"></h1>
+	<h1><small translate="sellers.Title2"></small></h1>
 </div>
 
 
@@ -9,47 +10,47 @@
 	<div style="max-height: 800px; overflow-y: scroll;">
 		<table class="table table-striped">
 			<tr table-sort="name">
-				<th data-columnName="name">Sölu Aðilar</th>
-				<th>Flokkur</th> 
+				<th data-columnName="name" translate="sellers.Name"></th>
+				<th translate="sellers.Category"></th> 
 				<th></th> 
 			</tr>
 			<tr class="active" ng-repeat="seller in sellers | orderBy:predicate:reverse">
 				<td><a ng-click="viewSeller(seller.id)" href="">{{seller.name}}</a></td>
 				<td>{{seller.category}}</td>
-				<td><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-8" data-toggle="modal" data-target=".bs-edit-modal-lg" ng-click="setUpdateSeller(seller)">Breyta</button></td>
+				<td><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-8" data-toggle="modal" data-target=".bs-edit-modal-lg" ng-click="setUpdateSeller(seller)" translate="sellers.EditButton"></button></td>
 			</tr>
 
 		</table>
 	</div>
 	
 	<div class="col-lg-12">
-		<button type="button" class="btn btn-primary col-lg-2 col-lg-offset-10" data-toggle="modal" data-target=".bs-add-modal-lg">Bæta Við</button>
+		<button type="button" class="btn btn-primary col-lg-2 col-lg-offset-10" data-toggle="modal" data-target=".bs-add-modal-lg" translate="sellers.AddButton"></button>
 
 		<div class="modal fade bs-add-modal-lg" id="add" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2>Bæta við Söluaðila</h2>
+							<h2 translate="sellers.AddSellerTitle"></h2>
 						</div>
 						<div class="panel-body">
 							<form name="addform">
 								<div class="form-group">
-									<label for="name">Nafn: </label>
+									<label for="name" translate="sellers.Name"></label>
 									<input type="text" name="name" class="form-control" id="name" placeholder="Nafn..." ng-model="name" ng-maxlength="32" ng-minlength="3" required>
 									<div ng-show="addform.name$invalid">
 										<small>villa!!!</small>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="category">Flokkur: </label>
+									<label for="category" translate="sellers.Category"></label>
 									<input type="text" class="form-control" id="category" placeholder="Flokkur..." ng-model="cat" required>
 								</div>
 								<div class="form-group">
-									<label for="image">Linkur á mynd: </label>
+									<label for="image" translate="sellers.link"></label>
 									<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="img" required>
 								</div>
-								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="addSeller(name, cat, img)">Bæta við</button>
+								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="addSeller(name, cat, img)" translate="sellers.AddButton"></button>
 							</form>
 						</div>
 					</div>
@@ -63,23 +64,23 @@
 				<div class="modal-content">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h2>Breyta við Söluaðila</h2>
+							<h2 translate="sellers.EditSellerTitle"></h2>
 						</div>
 						<div class="panel-body">
 							<form>
 								<div class="form-group">
-									<label for="name">Nafn: </label>
+									<label for="name" translate="sellers.Name"></label>
 									<input type="text" class="form-control" id="name" placeholder="{{UpdateSellerName}}" ng-model="updateName">
 								</div>
 								<div class="form-group">
-									<label for="category">Flokkur: </label>
+									<label for="category" translate="sellers.Category"></label>
 									<input type="text" class="form-control" id="category" placeholder="{{UpdateSellerCat}}" ng-model="updateCat">
 								</div>
 								<div class="form-group">
-									<label for="image">Linkur á mynd: </label>
+									<label for="image" translate="sellers.link"></label>
 									<input type="text" class="form-control" id="image" placeholder="{{UpdateSellerImg}}" ng-model="uptadeImg">
 								</div>
-								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="updateSellers(updateName, updateCat, uptadeImg)">Uppfæra</button>
+								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="updateSellers(updateName, updateCat, uptadeImg)" translate="sellers.update"></button>
 							</form>
 						</div>
 					</div>

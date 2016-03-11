@@ -1,7 +1,21 @@
 {
 	"sellers": {
 		"Title": "Sellers List",
+		"Title2": "Sellers",
 		"Name": "Name",
+		"AddButton": "Add",
+		"AddProductTitle": "Add new Product",
+		"AddSellerTitle": "Add Seller",
+		"EditButton": "Edit",
+		"EditProductTitle": "Edit Product",
+		"EditSellerTitle": "Edit Seller",
+		"Category": "Category",
+		"Nav-All": "All Products",
+		"Nav-Top10": "Top 10",
+		"link": "Link to image",
+		"Price": "Price",
+		"quantity": "Quantity",
+		"update": "Update",
 		"Messages": {
 			"LoadFailed": "Failed to load the list of sellers",
 			"SaveSucceeded": "The seller has been added successfully",
