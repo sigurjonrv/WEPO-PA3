@@ -288,11 +288,6 @@ function singleSellerController($scope, AppResource, $location, $routeParams) {
 		console.log($routeParams.sellerId);
 		var currID = $routeParams.sellerId;
 
-		
-		
-
-		
-
 		var getSellers = function(){
 			var SellerDetailsPromise = AppResource.getSellerDetails(currID);
 			SellerDetailsPromise.success(function(seller){

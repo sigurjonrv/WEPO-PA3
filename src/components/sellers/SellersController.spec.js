@@ -24,7 +24,7 @@ describe("SellersController", function() {
 		});
 	}));
 
-	it('addseller should be defined', function() {
-		expect(scope.addSeller).toBeDefined;
+	it('addSeller should be defined', function() {
+			expect(scope.addSeller).toBeDefined();
 	});
 });
