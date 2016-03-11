@@ -33,18 +33,21 @@
 							<h2>Bæta við Söluaðila</h2>
 						</div>
 						<div class="panel-body">
-							<form>
+							<form name="addform">
 								<div class="form-group">
 									<label for="name">Nafn: </label>
-									<input type="text" class="form-control" id="name" placeholder="Nafn..." ng-model="name">
+									<input type="text" name="name" class="form-control" id="name" placeholder="Nafn..." ng-model="name" ng-maxlength="32" ng-minlength="3" required>
+									<div ng-show="addform.name$invalid">
+										<small>villa!!!</small>
+									</div>
 								</div>
 								<div class="form-group">
 									<label for="category">Flokkur: </label>
-									<input type="text" class="form-control" id="category" placeholder="Flokkur..." ng-model="cat">
+									<input type="text" class="form-control" id="category" placeholder="Flokkur..." ng-model="cat" required>
 								</div>
 								<div class="form-group">
 									<label for="image">Linkur á mynd: </label>
-									<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="img">
+									<input type="text" class="form-control" id="image" placeholder="Linkur á mynd..." ng-model="img" required>
 								</div>
 								<button type="submit" class="btn btn-primary col-lg-2 col-lg-offset-10" ng-click="addSeller(name, cat, img)">Bæta við</button>
 							</form>
